@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evolve-360 Training Console</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <div>
+          <p class="app__kicker">Athlete Training Intelligence</p>
+          <h1>Evolve-360 Coach Console</h1>
+          <p class="app__subtitle">
+            Fast, rule-driven planning with AI exercise detail and readiness-based day-of adjustments.
+          </p>
+        </div>
+        <div class="app__status" id="status">Status: Ready</div>
+      </header>
+
+      <section class="card">
+        <h2>Baseline Athlete</h2>
+        <p class="card__hint">Use the same userId across all actions for a consistent plan.</p>
+        <div class="grid">
+          <label>
+            User ID
+            <input id="userId" placeholder="athlete-001" />
+          </label>
+          <label>
+            Experience Level
+            <select id="experienceLevel">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </label>
+          <label>
+            Workout Days / Week
+            <input id="workoutDays" type="number" min="1" max="6" value="4" />
+          </label>
+          <label>
+            Primary Goal
+            <select id="primaryGoal">
+              <option value="strength">Strength</option>
+              <option value="hypertrophy">Hypertrophy</option>
+              <option value="power">Power</option>
+              <option value="endurance">Endurance</option>
+              <option value="general-fitness">General Fitness</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Equipment Available (comma separated)
+          <input id="equipment" placeholder="barbell, dumbbells, rack" />
+        </label>
+        <div class="actions">
+          <button id="saveProfile">Save Profile</button>
+          <button id="createPlan">Create Weekly Plan</button>
+          <button id="enrichPlan" class="secondary">Enrich Plan with AI</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Daily Readiness → Start Workout</h2>
+        <div class="grid">
+          <label>
+            Date
+            <input id="readinessDate" type="date" />
+          </label>
+          <label>
+            Sleep Hours
+            <input id="sleepHours" type="number" min="0" max="16" value="7.5" step="0.1" />
+          </label>
+          <label>
+            Stress (1-5)
+            <input id="stressLevel" type="number" min="1" max="5" value="2" />
+          </label>
+          <label>
+            Feeling (1-5)
+            <input id="subjectiveFeeling" type="number" min="1" max="5" value="4" />
+          </label>
+          <label>
+            Hydration (1-5)
+            <input id="hydration" type="number" min="1" max="5" value="4" />
+          </label>
+          <label>
+            Soreness Areas
+            <input id="sorenessAreas" placeholder="hamstrings, shoulders" />
+          </label>
+        </div>
+        <div class="actions">
+          <button id="calculateReadiness">Calculate Readiness</button>
+          <button id="startWorkout" class="secondary">Start Workout</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Attendance Tracking</h2>
+        <div class="grid">
+          <label>
+            Week
+            <input id="attendanceWeek" type="number" min="1" value="1" />
+          </label>
+          <label>
+            Day
+            <input id="attendanceDay" type="number" min="1" max="7" value="1" />
+          </label>
+          <label>
+            Status
+            <select id="attendanceStatus">
+              <option value="completed">Completed</option>
+              <option value="missed">Missed</option>
+              <option value="pending">Pending</option>
+            </select>
+          </label>
+        </div>
+        <div class="actions">
+          <button id="markAttendance">Update Attendance</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Optional Session Log</h2>
+        <div class="grid">
+          <label>
+            Session Date
+            <input id="sessionDate" type="date" />
+          </label>
+          <label>
+            Planned Workout Type
+            <select id="plannedWorkoutType">
+              <option value="upper">Upper</option>
+              <option value="lower">Lower</option>
+              <option value="full">Full</option>
+              <option value="conditioning">Conditioning</option>
+              <option value="recovery">Recovery</option>
+              <option value="rest">Rest</option>
+            </select>
+          </label>
+          <label>
+            Actual Workout Type
+            <select id="actualWorkoutType">
+              <option value="upper">Upper</option>
+              <option value="lower">Lower</option>
+              <option value="full">Full</option>
+              <option value="conditioning">Conditioning</option>
+              <option value="recovery">Recovery</option>
+              <option value="rest">Rest</option>
+            </select>
+          </label>
+          <label>
+            Perceived Exertion (1-10)
+            <input id="perceivedExertion" type="number" min="1" max="10" value="7" />
+          </label>
+          <label>
+            Duration (minutes)
+            <input id="sessionDuration" type="number" min="5" max="300" value="60" />
+          </label>
+          <label>
+            Pain Reported
+            <input id="painReported" placeholder="none" />
+          </label>
+        </div>
+        <div class="actions">
+          <button id="logSession" class="secondary">Log Session</button>
+        </div>
+      </section>
+
+      <section class="card card--output">
+        <h2>Live Output</h2>
+        <pre id="output">Ready.</pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
